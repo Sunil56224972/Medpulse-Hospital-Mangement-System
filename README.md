@@ -306,7 +306,7 @@ User selects role → Enter credentials → Supabase Auth
 ### 🔐 Login Page
 *Glassmorphism card with animated background, role selector, and EKG preloader*
 
-<img src="hospital-management-app/Screenshots/login page.png" alt="MedPulse Login Page" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
+<img src="hospital-management-app/Screenshots/login page.png" alt="MedPulse Login Page" width="600" style="border-radius: 12px; margin-bottom: 20px;" />
 
 ---
 
