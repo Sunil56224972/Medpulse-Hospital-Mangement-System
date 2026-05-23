@@ -146,11 +146,11 @@ table{width:100%;border-collapse:collapse}
 .login-hero-text em{font-style:normal;color:#5eead4}
 .login-hero-text p{color:rgba(255,255,255,.8);font-size:.92rem;max-width:400px;line-height:1.75}
 .login-stats{display:flex;gap:.5rem;margin-top:1.8rem;flex-wrap:wrap}
-.stat-pill{display:flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.45rem .85rem;font-size:.78rem;color:rgba(255,255,255,.9);transition:all .3s cubic-bezier(.25,.46,.45,.94)}
+.stat-pill{display:flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.45rem .85rem;font-size:.78rem;color:rgba(255,255,255,.9);transition:all .3s cubic-bezier(.25,.46,.45,.94)}
 .stat-pill:hover{background:rgba(255,255,255,.16);transform:translateY(-2px) scale(1.03);box-shadow:0 4px 15px rgba(0,0,0,.15)}
 .stat-pill .material-symbols-rounded{font-size:16px;color:#5eead4}
 .login-right{flex:1;max-width:420px}
-.login-card{background:rgba(255,255,255,.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:2.2rem;box-shadow:0 12px 48px rgba(0,0,0,.2);transition:all .4s ease;animation:cardEntrance .6s cubic-bezier(.25,.46,.45,.94) both}
+.login-card{background:rgba(255,255,255,.08);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:2.2rem;box-shadow:0 12px 48px rgba(0,0,0,.2);transition:all .4s ease;animation:cardEntrance .6s cubic-bezier(.25,.46,.45,.94) both}
 .login-card:hover{box-shadow:0 16px 56px rgba(0,0,0,.25);border-color:rgba(255,255,255,.18);transform:translateY(-2px)}
 .login-card-header{margin-bottom:1.5rem}
 .login-card-header h3{font-size:1.3rem;font-weight:700;color:#fff}
@@ -196,7 +196,7 @@ table{width:100%;border-collapse:collapse}
 .btn-loader{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
 
 /* ========== SIDEBAR — Glass Transparent ========== */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:rgba(8,20,35,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:100;transition:transform .3s ease;box-shadow:4px 0 24px rgba(0,0,0,.15);animation:borderGlow 4s ease infinite}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:rgba(8,20,35,.55);backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:100;transition:transform .3s ease;box-shadow:4px 0 24px rgba(0,0,0,.15);animation:borderGlow 4s ease infinite}
 .sidebar-brand{display:flex;align-items:center;gap:.75rem;padding:1.2rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.08)}
 .brand-icon-sm{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 2px 10px rgba(94,234,212,.25));transition:transform .3s ease}
 .sidebar-brand:hover .brand-icon-sm{transform:scale(1.08) rotate(-3deg)}
@@ -221,7 +221,7 @@ table{width:100%;border-collapse:collapse}
 #app-page{display:flex;min-height:100vh;background:url('/login-bg.jpg') center/cover no-repeat fixed;position:relative}
 #app-page::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(145deg,rgba(8,25,40,.72) 0%,rgba(5,45,55,.58) 50%,rgba(10,30,48,.74) 100%);z-index:0;pointer-events:none}
 .main-content{flex:1;margin-left:var(--sidebar-w);display:flex;flex-direction:column;min-height:100vh;position:relative}
-.topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
+.topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
 .sidebar-toggle{display:none;padding:.4rem;border-radius:var(--radius-xs)}
 .sidebar-toggle:hover{background:rgba(255,255,255,.1)}
 .topbar-title{flex:1;position:relative;z-index:1}
@@ -239,7 +239,7 @@ table{width:100%;border-collapse:collapse}
 
 /* ========== STATS GRID — Glass ========== */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-bottom:1.6rem}
-.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.3rem 1.4rem;display:flex;align-items:center;gap:1rem;transition:all .35s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);cursor:default}
+.stat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.3rem 1.4rem;display:flex;align-items:center;gap:1rem;transition:all .35s cubic-bezier(.25,.46,.45,.94);position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);cursor:default}
 .stat-card:nth-child(1){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .1s both}
 .stat-card:nth-child(2){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .2s both}
 .stat-card:nth-child(3){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .3s both}
@@ -259,7 +259,7 @@ table{width:100%;border-collapse:collapse}
 
 /* ========== DASHBOARD GRID — Glass ========== */
 .dashboard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem}
-.card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;transition:all .35s cubic-bezier(.25,.46,.45,.94);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.card{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;transition:all .35s cubic-bezier(.25,.46,.45,.94);box-shadow:0 4px 16px rgba(0,0,0,.1)}
 .card:nth-child(1){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .5s both}
 .card:nth-child(2){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .6s both}
 .card:nth-child(3){animation:cardEntrance .5s cubic-bezier(.25,.46,.45,.94) .7s both}
@@ -411,9 +411,9 @@ table{width:100%;border-collapse:collapse}
 /* ========== PORTAL PAGES ========== */
 .portal-page{display:flex;width:100%;min-height:100vh;background:url('/login-bg.jpg') center/cover no-repeat fixed;position:relative}
 .portal-page::before{content:'';position:fixed;inset:0;background:linear-gradient(145deg,rgba(8,25,40,.72) 0%,rgba(5,45,55,.58) 50%,rgba(10,30,48,.74) 100%);z-index:0;pointer-events:none}
-.portal-sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:rgba(8,20,35,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:100;transition:transform .3s ease;box-shadow:4px 0 24px rgba(0,0,0,.15);animation:borderGlow 4s ease infinite}
+.portal-sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:rgba(8,20,35,.55);backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:100;transition:transform .3s ease;box-shadow:4px 0 24px rgba(0,0,0,.15);animation:borderGlow 4s ease infinite}
 .portal-page .main-content{flex:1;margin-left:var(--sidebar-w);display:flex;flex-direction:column;min-height:100vh;position:relative;z-index:1}
-.portal-page .topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
+.portal-page .topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
 .portal-page .topbar-title{flex:1}
 .portal-page .topbar-title h2{font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.3px}
 .portal-page .topbar-title p,.portal-page .topbar-subtitle{font-size:.73rem;color:rgba(255,255,255,.5);font-weight:500;letter-spacing:.2px}
@@ -436,7 +436,7 @@ table{width:100%;border-collapse:collapse}
 .victor-fab-pulse{display:none}
 @keyframes victorPulse{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.4);opacity:0}}
 
-.victor-panel{position:fixed;bottom:100px;right:28px;width:400px;max-height:560px;background:rgba(8,20,35,.45);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border:1px solid rgba(255,255,255,.15);border-radius:20px;display:flex;flex-direction:column;z-index:9998;box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.06) inset,0 0 50px rgba(94,234,212,.06);opacity:0;transform:translateY(20px) scale(.95);pointer-events:none;transition:all .35s cubic-bezier(.25,.46,.45,.94)}
+.victor-panel{position:fixed;bottom:100px;right:28px;width:400px;max-height:560px;background:rgba(8,20,35,.45);backdrop-filter:blur(24px) saturate(1.4);border:1px solid rgba(255,255,255,.15);border-radius:20px;display:flex;flex-direction:column;z-index:9998;box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.06) inset,0 0 50px rgba(94,234,212,.06);opacity:0;transform:translateY(20px) scale(.95);pointer-events:none;transition:all .35s cubic-bezier(.25,.46,.45,.94)}
 .victor-panel.victor-open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
 
 .victor-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);border-radius:20px 20px 0 0;backdrop-filter:blur(10px)}
