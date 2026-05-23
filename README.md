@@ -301,13 +301,28 @@ User selects role → Enter credentials → Supabase Auth
 
 ## 📸 Screenshots
 
-> **Login Page** — Glassmorphism card with animated background and role selector
+<div align="center">
 
-> **Admin Dashboard** — Real-time stats, charts, recent activity panels
+### 🔐 Login Page
+*Glassmorphism card with animated background, role selector, and EKG preloader*
 
-> **Billing** — Itemized invoicing with PDF download capability
+<img src="hospital-management-app/Screenshots/login page.png" alt="MedPulse Login Page" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
 
-> **Victor AI** — Natural language copilot for hands-free operations
+---
+
+### 📊 Admin Dashboard
+*Real-time stats, revenue charts, patient analytics, and recent activity panels*
+
+<img src="hospital-management-app/Screenshots/Dashboard.png" alt="MedPulse Admin Dashboard" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
+
+---
+
+### 🤖 Victor AI Copilot
+*Natural language assistant for hands-free hospital operations — add patients, schedule appointments, generate bills via chat*
+
+<img src="hospital-management-app/Screenshots/Agentic Copilot.png" alt="Victor AI Copilot" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
+
+</div>
 
 ---
 
