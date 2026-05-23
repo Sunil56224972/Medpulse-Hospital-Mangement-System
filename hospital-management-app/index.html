@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedPulse HMS — Hospital Management System</title>
+    <meta name="description" content="MedPulse HMS: A professional, real-time Hospital Management System for managing patients, doctors, appointments, and billing." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+</head>
+<body>
+    <!-- ============ PRELOADER ============ -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <img src="/logo.png" alt="MedPulse HMS" class="preloader-logo-img" />
+            <div class="preloader-text-group">
+                <p class="preloader-title">MedPulse <span>HMS</span></p>
+                <p class="preloader-tagline">Hospital Management System</p>
+            </div>
+            <div class="preloader-ekg">
+                <svg viewBox="0 0 280 40" preserveAspectRatio="none">
+                    <path class="ekg-line" d="M0,20 L60,20 L70,20 L80,5 L90,35 L100,5 L110,35 L120,20 L130,20 L180,20 L190,20 L200,5 L210,35 L220,5 L230,35 L240,20 L280,20"/>
+                    <circle class="ekg-dot" cx="280" cy="20" r="3"/>
+                </svg>
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ LOGIN PAGE ============ -->
+    <div id="login-page" class="page" style="display:none;">
+        <div class="login-container">
+            <div class="login-left">
+                <div class="login-brand">
+                    <img src="/logo.png" alt="MedPulse" class="brand-icon" />
+                    <h1>MedPulse<span>HMS</span></h1>
+                </div>
+                <div class="login-hero-text">
+                    <h2>Trusted Hospital<br/>Management <em>System</em></h2>
+                    <p>Manage patient records, doctor schedules, appointments, and hospital billing with a secure, real-time clinical platform.</p>
+                </div>
+                <div class="login-stats">
+                    <div class="stat-pill"><span class="material-symbols-rounded">local_hospital</span> Patient Records</div>
+                    <div class="stat-pill"><span class="material-symbols-rounded">verified_user</span> Secure Access</div>
+                    <div class="stat-pill"><span class="material-symbols-rounded">sync</span> Live Sync</div>
+                </div>
+            </div>
+            <div class="login-right">
+                <div class="login-card">
+                    <div class="login-card-header">
+                        <h3>Welcome Back</h3>
+                        <p>Sign in to your dashboard</p>
+                    </div>
+                    <div class="role-selector" id="login-role-selector">
+                        <button type="button" class="role-btn active" data-role="admin"><span class="material-symbols-rounded">admin_panel_settings</span>Admin</button>
+                        <button type="button" class="role-btn" data-role="doctor"><span class="material-symbols-rounded">stethoscope</span>Doctor</button>
+                        <button type="button" class="role-btn" data-role="patient"><span class="material-symbols-rounded">personal_injury</span>Patient</button>
+                    </div>
+                    <form id="login-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded">mail</span>
+                                <input type="email" id="login-email" placeholder="admin@medpulse.com" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded">lock</span>
+                                <input type="password" id="login-password" placeholder="Enter your password" required />
+                                <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                    <span class="material-symbols-rounded">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="login-error" class="form-error" style="display:none;"></div>
+                        <button type="submit" id="login-btn" class="btn btn-primary btn-full">
+                            <span class="btn-text">Sign In</span>
+                            <span class="btn-loader" style="display:none;"></span>
+                        </button>
+                    </form>
+                    <div class="login-divider"><span>or</span></div>
+                    <button id="signup-toggle-btn" class="btn btn-outline btn-full">Create New Account</button>
+
+                    <!-- Signup form (hidden) -->
+                    <form id="signup-form" style="display:none;" autocomplete="off">
+                        <div class="form-group">
+                            <label for="signup-email">Email Address</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded">mail</span>
+                                <input type="email" id="signup-email" placeholder="admin@medpulse.com" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded">lock</span>
+                                <input type="password" id="signup-password" placeholder="Min 6 characters" required minlength="6" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Register As</label>
+                            <div class="role-selector" id="signup-role-selector">
+                                <button type="button" class="role-btn active" data-role="admin"><span class="material-symbols-rounded">admin_panel_settings</span>Admin</button>
+                                <button type="button" class="role-btn" data-role="doctor"><span class="material-symbols-rounded">stethoscope</span>Doctor</button>
+                                <button type="button" class="role-btn" data-role="patient"><span class="material-symbols-rounded">personal_injury</span>Patient</button>
+                            </div>
+                        </div>
+                        <div id="signup-error" class="form-error" style="display:none;"></div>
+                        <div id="signup-success" class="form-success" style="display:none;"></div>
+                        <button type="submit" id="signup-btn" class="btn btn-primary btn-full">
+                            <span class="btn-text">Create Account</span>
+                            <span class="btn-loader" style="display:none;"></span>
+                        </button>
+                        <button type="button" id="back-to-login-btn" class="btn btn-outline btn-full" style="margin-top:0.5rem;">Back to Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MAIN APP ============ -->
+    <div id="app-page" class="page" style="display:none;">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-brand">
+                <img src="/logo.png" alt="MedPulse" class="brand-icon-sm" />
+                <span class="brand-name">MedPulse</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="material-symbols-rounded">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="patients">
+                    <span class="material-symbols-rounded">group</span>
+                    <span>Patients</span>
+                </a>
+                <a href="#" class="nav-item" data-section="doctors">
+                    <span class="material-symbols-rounded">stethoscope</span>
+                    <span>Doctors</span>
+                </a>
+                <a href="#" class="nav-item" data-section="appointments">
+                    <span class="material-symbols-rounded">calendar_month</span>
+                    <span>Appointments</span>
+                </a>
+                <a href="#" class="nav-item" data-section="billing">
+                    <span class="material-symbols-rounded">receipt_long</span>
+                    <span>Billing</span>
+                </a>
+                <a href="#" class="nav-item" data-section="medical-history">
+                    <span class="material-symbols-rounded">medical_information</span>
+                    <span>Medical History</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="nav-item logout-item">
+                    <span class="material-symbols-rounded">logout</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+                    <span class="material-symbols-rounded">menu</span>
+                </button>
+                <div class="topbar-title">
+                    <h2 id="page-title">Dashboard</h2>
+                    <p id="page-subtitle" class="topbar-subtitle">Hospital Overview</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="live-indicator">
+                        <span class="live-dot"></span> Connected
+                    </div>
+                    <div id="user-info" class="user-badge">
+                        <span class="material-symbols-rounded">account_circle</span>
+                        <span id="user-email-display">admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ====== DASHBOARD SECTION ====== -->
+            <section id="section-dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card stat-patients" id="stat-patients">
+                        <div class="stat-icon"><img src="/icons/Registered Patients.png" alt="Patients" class="stat-icon-img" /></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-patients">0</span>
+                            <span class="stat-label">Registered Patients</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-doctors" id="stat-doctors">
+                        <div class="stat-icon"><img src="/icons/Medical Staff.png" alt="Doctors" class="stat-icon-img" /></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-doctors">0</span>
+                            <span class="stat-label">Medical Staff</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-appointments" id="stat-appointments">
+                        <div class="stat-icon"><img src="/icons/Appointments.png" alt="Appointments" class="stat-icon-img" /></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-appointments">0</span>
+                            <span class="stat-label">Appointments</span>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-revenue" id="stat-revenue">
+                        <div class="stat-icon"><img src="/icons/Total Revenue.png" alt="Revenue" class="stat-icon-img" /></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-revenue">₹0</span>
+                            <span class="stat-label">Total Revenue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-grid">
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-rounded">trending_up</span> Revenue Trend</h3>
+                        </div>
+                        <div class="card-body chart-body">
+                            <canvas id="revenue-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card chart-card chart-card-sm">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-rounded">donut_large</span> Patient Status</h3>
+                        </div>
+                        <div class="card-body chart-body">
+                            <canvas id="patient-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card recent-patients-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-rounded">ward</span> Recent Admissions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="recent-patients-list" class="data-list">
+                                <p class="empty-state">No patients registered</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card upcoming-appointments-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-rounded">schedule</span> Upcoming Appointments</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="upcoming-appointments-list" class="data-list">
+                                <p class="empty-state">No upcoming appointments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card pending-bills-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-rounded">receipt_long</span> Pending Payments</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="pending-bills-list" class="data-list">
+                                <p class="empty-state">No pending bills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== PATIENTS SECTION ====== -->
+            <section id="section-patients" class="content-section">
+                <div class="section-toolbar">
+                    <div class="search-box">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" id="patient-search" placeholder="Search patients..." />
+                    </div>
+                    <button id="add-patient-btn" class="btn btn-primary">
+                        <span class="material-symbols-rounded">person_add</span> Register Patient
+                    </button>
+                </div>
+                <div class="card table-card">
+                    <div class="table-responsive">
+                        <table id="patients-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Disease</th>
+                                    <th>Blood Group</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patients-tbody">
+                                <tr><td colspan="9" class="empty-state">Loading patients...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== DOCTORS SECTION ====== -->
+            <section id="section-doctors" class="content-section">
+                <div class="section-toolbar">
+                    <div class="search-box">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" id="doctor-search" placeholder="Search doctors..." />
+                    </div>
+                    <button id="add-doctor-btn" class="btn btn-primary">
+                        <span class="material-symbols-rounded">person_add</span> Add Doctor
+                    </button>
+                </div>
+                <div class="card table-card">
+                    <div class="table-responsive">
+                        <table id="doctors-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Doctor ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Specialization</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="doctors-tbody">
+                                <tr><td colspan="8" class="empty-state">Loading doctors...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== APPOINTMENTS SECTION ====== -->
+            <section id="section-appointments" class="content-section">
+                <div class="section-toolbar">
+                    <div class="search-box">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" id="appointment-search" placeholder="Search appointments..." />
+                    </div>
+                    <button id="add-appointment-btn" class="btn btn-primary">
+                        <span class="material-symbols-rounded">edit_calendar</span> Book Appointment
+                    </button>
+                </div>
+                <div class="card table-card">
+                    <div class="table-responsive">
+                        <table id="appointments-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Doctor ID</th>
+                                    <th>Doctor Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-tbody">
+                                <tr><td colspan="8" class="empty-state">Loading appointments...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== BILLING SECTION ====== -->
+            <section id="section-billing" class="content-section">
+                <div class="section-toolbar">
+                    <div class="search-box">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" id="bill-search" placeholder="Search bills..." />
+                    </div>
+                    <button id="add-bill-btn" class="btn btn-primary">
+                        <span class="material-symbols-rounded">receipt_long</span> Generate Invoice
+                    </button>
+                </div>
+                <div class="card table-card">
+                    <div class="table-responsive">
+                        <table id="bills-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Bill #</th>
+                                    <th>Patient ID</th>
+                                    <th>Date</th>
+                                    <th>Consultation</th>
+                                    <th>Tests</th>
+                                    <th>Medication</th>
+                                    <th>Room</th>
+                                    <th>Total</th>
+                                    <th>Payment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bills-tbody">
+                                <tr><td colspan="10" class="empty-state">Loading bills...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== MEDICAL HISTORY SECTION ====== -->
+            <section id="section-medical-history" class="content-section">
+                <div class="section-toolbar">
+                    <div class="search-box">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" id="record-search" placeholder="Search medical records..." />
+                    </div>
+                    <button id="add-record-btn" class="btn btn-primary">
+                        <span class="material-symbols-rounded">note_add</span> Add Record
+                    </button>
+                </div>
+                <div class="card table-card">
+                    <div class="table-responsive">
+                        <table id="records-table" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Patient ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Diagnosis</th>
+                                    <th>Prescription</th>
+                                    <th>Doctor</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="records-tbody">
+                                <tr><td colspan="8" class="empty-state">Loading medical records...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ============ MODAL ============ -->
+    <div id="modal-overlay" class="modal-overlay" style="display:none;">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button id="modal-close" class="modal-close" aria-label="Close modal">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- ============ DOCTOR PORTAL ============ -->
+    <div id="doctor-portal" class="page portal-page" style="display:none;">
+        <div class="portal-sidebar">
+            <div class="sidebar-brand"><img src="/logo.png" alt="MedPulse" class="brand-icon-sm" /><span class="brand-name">MedPulse</span></div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="doc-dashboard"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+                <a href="#" class="nav-item" data-section="doc-appointments"><span class="material-symbols-rounded">calendar_month</span><span>My Appointments</span></a>
+                <a href="#" class="nav-item" data-section="doc-patients"><span class="material-symbols-rounded">group</span><span>My Patients</span></a>
+                <a href="#" class="nav-item" data-section="doc-records"><span class="material-symbols-rounded">medical_information</span><span>Medical Records</span></a>
+            </nav>
+            <div class="sidebar-footer"><button id="doctor-logout-btn" class="nav-item logout-item"><span class="material-symbols-rounded">logout</span><span>Sign Out</span></button></div>
+        </div>
+        <main class="main-content">
+            <header class="topbar">
+                <button class="sidebar-toggle portal-sidebar-toggle" aria-label="Toggle sidebar"><span class="material-symbols-rounded">menu</span></button>
+                <div class="topbar-title"><h2 id="doc-page-title">Dashboard</h2><p id="doc-page-subtitle">Doctor Overview</p></div>
+                <div class="topbar-right">
+                    <div class="user-badge"><span class="material-symbols-rounded">stethoscope</span><span id="doc-email-display">doctor@medpulse.com</span><span class="role-badge role-doctor">Doctor</span></div>
+                </div>
+            </header>
+            <div class="content-area">
+                <section id="section-doc-dashboard" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Appointments.png" alt="Appointments" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="doc-total-appointments">0</p><p class="stat-label">My Appointments</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Registered Patients.png" alt="Patients" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="doc-total-patients">0</p><p class="stat-label">My Patients</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Medical Staff.png" alt="Pending" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="doc-pending">0</p><p class="stat-label">Pending Today</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Total Revenue.png" alt="Completed" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="doc-completed">0</p><p class="stat-label">Completed</p></div></div>
+                    </div>
+                    <div class="card"><div class="card-header"><h3>Today's Schedule</h3></div><div class="card-body"><div class="table-container"><table><thead><tr><th>Patient</th><th>Time</th><th>Status</th><th>Notes</th></tr></thead><tbody id="doc-today-tbody"><tr><td colspan="4" class="empty-state">No appointments today</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-doc-appointments" class="content-section">
+                    <div class="section-header"><h3>My Appointments</h3></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>Patient</th><th>Date</th><th>Time</th><th>Status</th><th>Notes</th></tr></thead><tbody id="doc-appointments-tbody"><tr><td colspan="5" class="empty-state">No appointments found</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-doc-patients" class="content-section">
+                    <div class="section-header"><h3>My Patients</h3></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Disease</th><th>Status</th></tr></thead><tbody id="doc-patients-tbody"><tr><td colspan="5" class="empty-state">No patients found</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-doc-records" class="content-section">
+                    <div class="section-header"><h3>Medical Records</h3><button class="btn btn-primary" id="doc-add-record-btn"><span class="material-symbols-rounded">add</span> Add Record</button></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>Patient</th><th>Date</th><th>Type</th><th>Diagnosis</th><th>Prescription</th></tr></thead><tbody id="doc-records-tbody"><tr><td colspan="5" class="empty-state">No records found</td></tr></tbody></table></div></div></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============ PATIENT PORTAL ============ -->
+    <div id="patient-portal" class="page portal-page" style="display:none;">
+        <div class="portal-sidebar">
+            <div class="sidebar-brand"><img src="/logo.png" alt="MedPulse" class="brand-icon-sm" /><span class="brand-name">MedPulse</span></div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="pat-dashboard"><span class="material-symbols-rounded">dashboard</span><span>Dashboard</span></a>
+                <a href="#" class="nav-item" data-section="pat-appointments"><span class="material-symbols-rounded">calendar_month</span><span>My Appointments</span></a>
+                <a href="#" class="nav-item" data-section="pat-records"><span class="material-symbols-rounded">medical_information</span><span>My Records</span></a>
+                <a href="#" class="nav-item" data-section="pat-bills"><span class="material-symbols-rounded">receipt_long</span><span>My Bills</span></a>
+            </nav>
+            <div class="sidebar-footer"><button id="patient-logout-btn" class="nav-item logout-item"><span class="material-symbols-rounded">logout</span><span>Sign Out</span></button></div>
+        </div>
+        <main class="main-content">
+            <header class="topbar">
+                <button class="sidebar-toggle portal-sidebar-toggle" aria-label="Toggle sidebar"><span class="material-symbols-rounded">menu</span></button>
+                <div class="topbar-title"><h2 id="pat-page-title">Dashboard</h2><p id="pat-page-subtitle">Patient Overview</p></div>
+                <div class="topbar-right">
+                    <div class="user-badge"><span class="material-symbols-rounded">personal_injury</span><span id="pat-email-display">patient@medpulse.com</span><span class="role-badge role-patient">Patient</span></div>
+                </div>
+            </header>
+            <div class="content-area">
+                <section id="section-pat-dashboard" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Appointments.png" alt="Appointments" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="pat-total-appointments">0</p><p class="stat-label">Appointments</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Registered Patients.png" alt="Records" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="pat-total-records">0</p><p class="stat-label">Medical Records</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Total Revenue.png" alt="Bills" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="pat-total-bills">0</p><p class="stat-label">Bills</p></div></div>
+                        <div class="stat-card"><div class="stat-icon"><img src="/icons/Medical Staff.png" alt="Pending" class="stat-icon-img" /></div><div class="stat-info"><p class="stat-number" id="pat-pending-amount">₹0</p><p class="stat-label">Pending Amount</p></div></div>
+                    </div>
+                    <div class="card"><div class="card-header"><h3>Upcoming Appointments</h3></div><div class="card-body"><div class="table-container"><table><thead><tr><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead><tbody id="pat-upcoming-tbody"><tr><td colspan="4" class="empty-state">No upcoming appointments</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-pat-appointments" class="content-section">
+                    <div class="section-header"><h3>My Appointments</h3></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th><th>Notes</th></tr></thead><tbody id="pat-appointments-tbody"><tr><td colspan="5" class="empty-state">No appointments found</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-pat-records" class="content-section">
+                    <div class="section-header"><h3>My Medical Records</h3></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>Date</th><th>Doctor</th><th>Type</th><th>Diagnosis</th><th>Prescription</th></tr></thead><tbody id="pat-records-tbody"><tr><td colspan="5" class="empty-state">No records found</td></tr></tbody></table></div></div></div>
+                </section>
+                <section id="section-pat-bills" class="content-section">
+                    <div class="section-header"><h3>My Bills</h3></div>
+                    <div class="card"><div class="card-body"><div class="table-container"><table><thead><tr><th>Bill #</th><th>Date</th><th>Consultation</th><th>Tests</th><th>Total</th><th>Status</th></tr></thead><tbody id="pat-bills-tbody"><tr><td colspan="6" class="empty-state">No bills found</td></tr></tbody></table></div></div></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- ============ VICTOR AI COPILOT ============ -->
+    <button id="victor-fab" class="victor-fab" title="Victor AI Copilot">
+        <img src="/copilot icon.png" alt="Victor" class="victor-fab-icon" />
+        <span class="victor-fab-pulse"></span>
+    </button>
+
+    <div id="victor-panel" class="victor-panel">
+        <div class="victor-header">
+            <div class="victor-header-left">
+                <div class="victor-logo"><img src="/copilot icon.png" alt="Victor" class="victor-logo-icon" /></div>
+                <div>
+                    <h4>Victor</h4>
+                    <span class="victor-status"><span class="victor-status-dot"></span> AI Copilot</span>
+                </div>
+            </div>
+            <button id="victor-close" class="victor-close"><span class="material-symbols-rounded">close</span></button>
+        </div>
+        <div id="victor-messages" class="victor-messages"></div>
+        <div class="victor-input-area">
+            <input type="text" id="victor-input" placeholder="Ask Victor anything..." autocomplete="off" />
+            <button id="victor-send" class="victor-send-btn"><span class="material-symbols-rounded">send</span></button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
