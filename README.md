@@ -320,7 +320,7 @@ User selects role → Enter credentials → Supabase Auth
 ### 🤖 Victor AI Copilot
 *Natural language assistant for hands-free hospital operations — add patients, schedule appointments, generate bills via chat*
 
-<img src="hospital-management-app/Screenshots/Agentic Copilot.png" alt="Victor AI Copilot" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
+<img src="hospital-management-app/Screenshots/Agentic%20ai%20copilot.png" alt="Agentic AI Copilot" width="800" style="border-radius: 12px; margin-bottom: 20px;" />
 
 </div>
 
