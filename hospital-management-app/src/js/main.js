@@ -143,12 +143,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         preloader.classList.add('preloader-hide');
         setTimeout(() => { preloader.style.display = 'none'; }, 600);
 
-        if (user) {
-            initApp(user);
-        } else {
-            showLogin();
-            document.getElementById('login-page').style.animation = 'fadeSlideIn 0.6s ease';
-        }
+        // BYPASS LOGIN: Force app initialization as admin
+        initApp({ email: 'admin@medpulse.com' });
     }, 4000);
 
     // ============ PREMIUM ANIMATIONS ============
