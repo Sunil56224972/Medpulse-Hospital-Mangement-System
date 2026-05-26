@@ -11,15 +11,8 @@ export function getUserRole() { return currentRole; }
 export function getUserProfile() { return currentProfile; }
 
 export async function getCurrentUser() {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-        const profile = await fetchProfile(user.id);
-        if (profile) {
-            currentRole = profile.role;
-            currentProfile = profile;
-        }
-    }
-    return user;
+    // DEMO MODE: No persistent session, always show login
+    return null;
 }
 
 async function fetchProfile(userId) {
@@ -33,21 +26,10 @@ async function fetchProfile(userId) {
 }
 
 export async function signIn(email, password, role) {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-
-    // Check profile role matches
-    const profile = await fetchProfile(data.user.id);
-    if (!profile) {
-        throw new Error('No profile found. Please sign up first.');
-    }
-    if (profile.role !== role) {
-        await supabase.auth.signOut();
-        throw new Error(`This account is registered as "${profile.role}". Please select the correct role.`);
-    }
-    currentRole = profile.role;
-    currentProfile = profile;
-    return data.user;
+    // DEMO MODE: Accept any email/password, use selected role
+    currentRole = role;
+    currentProfile = { email, role, full_name: email.split('@')[0] };
+    return { email };
 }
 
 export async function signUp(email, password, role) {
@@ -75,10 +57,9 @@ export async function signUp(email, password, role) {
 }
 
 export async function signOut() {
+    // DEMO MODE: Just reset state
     currentRole = 'admin';
     currentProfile = null;
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
 }
 
 function getSelectedRole(selectorId) {
@@ -209,8 +190,5 @@ export function initAuthListeners(onLogin, onLogout) {
         }
     });
 
-    // Auth state changes
-    supabase.auth.onAuthStateChange((event, session) => {
-        if (event === 'SIGNED_OUT') onLogout();
-    });
+    // DEMO MODE: Auth state listener disabled
 }
