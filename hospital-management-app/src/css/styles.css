@@ -319,13 +319,14 @@ table{width:100%;border-collapse:collapse}
 /* ========== DATA TABLE ========== */
 .table-card{overflow:hidden}
 .table-responsive{overflow-x:auto}
-.data-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;table-layout:fixed}
 .data-table thead{background:var(--bg-input)}
-.data-table th{padding:.7rem 1rem;text-align:left;font-weight:600;font-size:.73rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim);border-bottom:1px solid var(--border);white-space:nowrap}
-.data-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.data-table th{padding:.7rem 1rem;text-align:left;font-weight:600;font-size:.73rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim);border-bottom:1px solid var(--border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.data-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .data-table tbody tr{transition:var(--transition)}
 .data-table tbody tr:hover{background:var(--primary-light)}
 .table-row-animate{animation:fadeSlideIn .3s ease both}
+.table-container{overflow-x:auto;border-radius:8px}
 .name-cell{font-weight:600;color:var(--text)}
 .total-cell{font-weight:700;color:var(--green)}
 .id-badge{background:var(--primary-light);color:var(--primary);padding:.18rem .5rem;border-radius:var(--radius-xs);font-size:.76rem;font-weight:600}
