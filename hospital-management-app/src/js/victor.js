@@ -11,7 +11,7 @@ import { loadMedicalRecords } from './medical-history.js';
 import { updateDashboard } from './dashboard.js';
 
 // ⚠️ Replace with your Groq API key (get one free at https://console.groq.com)
-const GROQ_API_KEY = 'YOUR_GROQ_API_KEY_HERE';
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || '';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 let chatHistory = [];
