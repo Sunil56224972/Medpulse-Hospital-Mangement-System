@@ -387,13 +387,42 @@ table{width:100%;border-collapse:collapse}
   .login-hero-text p{margin:0 auto}.login-right{max-width:100%}
 }
 @media(max-width:768px){
-  .stats-grid{grid-template-columns:1fr 1fr}.dashboard-grid{grid-template-columns:1fr}.charts-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .dashboard-grid{grid-template-columns:1fr}
+  .charts-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .section-toolbar{flex-direction:column;align-items:stretch}
   .search-box{min-width:unset}
   .topbar{padding:0 1rem}
+  /* Fix background image on mobile — 'fixed' is broken on iOS/Android */
+  #app-page,#login-page,.portal-page{background-attachment:scroll}
+  #app-page{min-height:100vh;background-size:cover}
+  .portal-page{min-height:100vh;background-size:cover}
+  /* Tables: remove fixed layout, allow horizontal scroll, show full text */
+  .data-table{table-layout:auto;font-size:.75rem}
+  .data-table th{padding:.5rem .6rem;font-size:.65rem}
+  .data-table td{padding:.45rem .6rem;white-space:nowrap}
+  .table-container{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-container table{min-width:500px}
+  .content-section{padding:1rem}
 }
-@media(max-width:480px){.stats-grid{grid-template-columns:1fr}.login-card{padding:1.2rem}}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .login-card{padding:1.2rem}
+  .stat-card{padding:.8rem 1rem}
+  .stat-number{font-size:1.4rem}
+  .stat-label{font-size:.65rem}
+  .topbar-title h2{font-size:1rem}
+  .content-section{padding:.7rem}
+  .card-body{padding:.6rem .8rem}
+  .card-header{padding:.7rem .8rem}
+  .table-container table{min-width:580px}
+  .data-table th{font-size:.62rem;padding:.4rem .5rem}
+  .data-table td{font-size:.72rem;padding:.4rem .5rem}
+  /* Background fix for very small screens */
+  #app-page,.portal-page{background-attachment:scroll;background-position:center top;background-size:cover}
+  #app-page::before,.portal-page::before{position:fixed;min-height:100vh}
+}
 
 /* ========== ROLE SELECTOR ========== */
 .role-selector{display:flex;gap:.4rem;margin-bottom:.8rem;padding:4px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
@@ -426,7 +455,15 @@ table{width:100%;border-collapse:collapse}
 .portal-page .stat-icon .material-symbols-rounded{color:#5eead4;font-size:24px}
 .portal-page .content-section{display:none;animation:fadeSlideIn .4s ease;position:relative;z-index:1}
 .portal-page .content-section.active{display:block}
-@media(max-width:768px){.portal-sidebar{transform:translateX(-100%)}.portal-sidebar.open{transform:translateX(0);box-shadow:var(--shadow-lg)}.portal-page .main-content{margin-left:0}.portal-page .sidebar-toggle{display:flex}}
+@media(max-width:768px){
+  .portal-sidebar{transform:translateX(-100%)}
+  .portal-sidebar.open{transform:translateX(0);box-shadow:var(--shadow-lg)}
+  .portal-page .main-content{margin-left:0}
+  .portal-page .sidebar-toggle{display:flex}
+  .portal-page .topbar{padding:0 .8rem}
+  .portal-page .content-area{padding:1rem}
+  .portal-page .section-header h3{font-size:.95rem}
+}
 
 /* ========== VICTOR AI COPILOT ========== */
 .victor-fab{position:fixed;bottom:20px;right:20px;width:115px;height:115px;border-radius:50%;border:none;background:none;color:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:none;z-index:9999;transition:all .3s cubic-bezier(.25,.46,.45,.94)}
