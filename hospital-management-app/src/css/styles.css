@@ -220,6 +220,7 @@ table{width:100%;border-collapse:collapse}
 /* ========== MAIN CONTENT + TOPBAR ========== */
 #app-page{display:flex;min-height:100vh;background:url('/login-bg.jpg') center/cover no-repeat fixed;position:relative}
 #app-page::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(145deg,rgba(8,25,40,.72) 0%,rgba(5,45,55,.58) 50%,rgba(10,30,48,.74) 100%);z-index:0;pointer-events:none}
+#app-page::after{content:'';position:fixed;inset:0;background:url('/login-bg.jpg') center/cover no-repeat;z-index:-1;pointer-events:none;display:none}
 .main-content{flex:1;margin-left:var(--sidebar-w);display:flex;flex-direction:column;min-height:100vh;position:relative}
 .topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
 .sidebar-toggle{display:none;padding:.4rem;border-radius:var(--radius-xs)}
@@ -395,9 +396,8 @@ table{width:100%;border-collapse:collapse}
   .search-box{min-width:unset}
   .topbar{padding:0 1rem}
   /* Fix background image on mobile — 'fixed' is broken on iOS/Android */
-  #app-page,#login-page,.portal-page{background-attachment:scroll}
-  #app-page{min-height:100vh;background-size:cover}
-  .portal-page{min-height:100vh;background-size:cover}
+  #app-page,.portal-page{background-image:none!important}
+  #app-page::after,.portal-page::after{display:block}
   /* Tables: remove fixed layout, allow horizontal scroll, show full text */
   .data-table{table-layout:auto;font-size:.75rem}
   .data-table th{padding:.5rem .6rem;font-size:.65rem}
@@ -419,9 +419,8 @@ table{width:100%;border-collapse:collapse}
   .table-container table{min-width:580px}
   .data-table th{font-size:.62rem;padding:.4rem .5rem}
   .data-table td{font-size:.72rem;padding:.4rem .5rem}
-  /* Background fix for very small screens */
-  #app-page,.portal-page{background-attachment:scroll;background-position:center top;background-size:cover}
-  #app-page::before,.portal-page::before{position:fixed;min-height:100vh}
+  /* Login page background fix */
+  #login-page{background-attachment:scroll;background-size:cover}
 }
 
 /* ========== ROLE SELECTOR ========== */
@@ -441,6 +440,7 @@ table{width:100%;border-collapse:collapse}
 /* ========== PORTAL PAGES ========== */
 .portal-page{display:flex;width:100%;min-height:100vh;background:url('/login-bg.jpg') center/cover no-repeat fixed;position:relative}
 .portal-page::before{content:'';position:fixed;inset:0;background:linear-gradient(145deg,rgba(8,25,40,.72) 0%,rgba(5,45,55,.58) 50%,rgba(10,30,48,.74) 100%);z-index:0;pointer-events:none}
+.portal-page::after{content:'';position:fixed;inset:0;background:url('/login-bg.jpg') center/cover no-repeat;z-index:-1;pointer-events:none;display:none}
 .portal-sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:rgba(8,20,35,.55);backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;z-index:100;transition:transform .3s ease;box-shadow:4px 0 24px rgba(0,0,0,.15);animation:borderGlow 4s ease infinite}
 .portal-page .main-content{flex:1;margin-left:var(--sidebar-w);display:flex;flex-direction:column;min-height:100vh;position:relative;z-index:1}
 .portal-page .topbar{display:flex;align-items:center;gap:1rem;padding:0 1.8rem;height:var(--topbar-h);background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.15)}
